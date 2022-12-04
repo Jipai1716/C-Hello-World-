@@ -3,19 +3,19 @@
 #include<stdlib.h>
 #include<windows.h>
 
-//³ÌĞòÉè¼Æ¿Î³ÌÉè¼Æ×÷Òµ-¼Æ2204-ÕÅ¼ÌÒ¢//
+//ç¨‹åºè®¾è®¡è¯¾ç¨‹è®¾è®¡ä½œä¸š-è®¡2204-å¼ ç»§å°§//
 
-//½á¹¹ÌåÉùÃ÷Çø 
-struct node//³Ë¿ÍĞÅÏ¢ £¨ÔÚ³µ´ÎĞÅÏ¢ÖĞ±»ÒıÓÃ£© 
+//ç»“æ„ä½“å£°æ˜åŒº 
+struct node//ä¹˜å®¢ä¿¡æ¯ ï¼ˆåœ¨è½¦æ¬¡ä¿¡æ¯ä¸­è¢«å¼•ç”¨ï¼‰ 
 {  
-	char name[12];         //³Ë¿ÍĞÕÃû
-    char IDcard[20];        //³Ë¿ÍÉí·İÖ¤ºÅÂë
-    int TicketNum;         //¶©Æ±Êı
-    float FareSum;         //×ÜÆ±¼Û
-    struct node *next=NULL;      //Ö¸Õë³ÉÔ±
+	char name[12];         //ä¹˜å®¢å§“å
+    char IDcard[20];        //ä¹˜å®¢èº«ä»½è¯å·ç 
+    int TicketNum;         //è®¢ç¥¨æ•°
+    float FareSum;         //æ€»ç¥¨ä»·
+    struct node *next=NULL;      //æŒ‡é’ˆæˆå‘˜
 };
 
-struct Dtime//ÈÕÆÚĞÅÏ¢ £¨ÔÚ³µ´ÎĞÅÏ¢ÖĞ±»ÒıÓÃ£© 
+struct Dtime//æ—¥æœŸä¿¡æ¯ ï¼ˆåœ¨è½¦æ¬¡ä¿¡æ¯ä¸­è¢«å¼•ç”¨ï¼‰ 
 {  
 	short year;
     short month;
@@ -24,24 +24,24 @@ struct Dtime//ÈÕÆÚĞÅÏ¢ £¨ÔÚ³µ´ÎĞÅÏ¢ÖĞ±»ÒıÓÃ£©
     short minute;
 };
 
-struct train//³µ´ÎĞÅÏ¢ 
+struct train//è½¦æ¬¡ä¿¡æ¯ 
 {  
-	char terminal[20];          //ÖÕµãÕ¾
-	char sequence[20];         //³µ´Î
-	struct Dtime StartTime;     //·¢³µÊ±¼ä
-	float fare;                //Æ±¼Û
-	int SpareTicketNum;       //ÓàÆ±Êı
-	struct node *head;         //Ö¸Õë³ÉÔ±£¬Ö¸Ïò¸ÃÏßÂ·µÚÒ»¸ö¶©Æ±³Ë¿Í
+	char terminal[20];          //ç»ˆç‚¹ç«™
+	char sequence[20];         //è½¦æ¬¡
+	struct Dtime StartTime;     //å‘è½¦æ—¶é—´
+	float fare;                //ç¥¨ä»·
+	int SpareTicketNum;       //ä½™ç¥¨æ•°
+	struct node *head;         //æŒ‡é’ˆæˆå‘˜ï¼ŒæŒ‡å‘è¯¥çº¿è·¯ç¬¬ä¸€ä¸ªè®¢ç¥¨ä¹˜å®¢
 }
 	train_list[5][2];
 
 
-void info()//³µ´ÎĞÅÏ¢¸³Öµ
+void info()//è½¦æ¬¡ä¿¡æ¯èµ‹å€¼
 {
 	
-//--Çàµº
+//--é’å²›
 //-Q101 
-	strcpy(train_list[0][0].terminal,"Çàµº");
+	strcpy(train_list[0][0].terminal,"é’å²›");
 	strcpy(train_list[0][0].sequence,"Q101");
 	train_list[0][0].fare=200; 
 	train_list[0][0].SpareTicketNum=300;
@@ -52,7 +52,7 @@ void info()//³µ´ÎĞÅÏ¢¸³Öµ
 	train_list[0][0].StartTime.minute=30;
 	train_list[0][0].head=NULL;
 //-Q102
-	strcpy(train_list[0][1].terminal,"Çàµº");
+	strcpy(train_list[0][1].terminal,"é’å²›");
 	strcpy(train_list[0][1].sequence,"Q102");
 	train_list[0][1].fare=200; 
 	train_list[0][1].SpareTicketNum=300;
@@ -62,9 +62,9 @@ void info()//³µ´ÎĞÅÏ¢¸³Öµ
 	train_list[0][1].StartTime.hour=11;
 	train_list[0][1].StartTime.minute=25;
 	train_list[0][1].head=NULL;
-//--ÁÙÒÊ 
+//--ä¸´æ²‚ 
 //-L101
-	strcpy(train_list[1][0].terminal,"ÁÙÒÊ");
+	strcpy(train_list[1][0].terminal,"ä¸´æ²‚");
 	strcpy(train_list[1][0].sequence,"L101");
 	train_list[1][0].fare=180; 
 	train_list[1][0].SpareTicketNum=300;
@@ -74,9 +74,9 @@ void info()//³µ´ÎĞÅÏ¢¸³Öµ
 	train_list[1][0].StartTime.hour=07;
 	train_list[1][0].StartTime.minute=15;
 	train_list[1][0].head=NULL;
-//--×Í²©
+//--æ·„åš
 //-Z101
-	strcpy(train_list[2][0].terminal,"×Í²©");
+	strcpy(train_list[2][0].terminal,"æ·„åš");
 	strcpy(train_list[2][0].sequence,"Z101");
 	train_list[2][0].fare=210; 
 	train_list[2][0].SpareTicketNum=300;
@@ -86,9 +86,9 @@ void info()//³µ´ÎĞÅÏ¢¸³Öµ
 	train_list[2][0].StartTime.hour=06;
 	train_list[2][0].StartTime.minute=30;
 	train_list[2][0].head=NULL;
-//--¶«Óª
+//--ä¸œè¥
 //-D101
-	strcpy(train_list[3][0].terminal,"¶«Óª");
+	strcpy(train_list[3][0].terminal,"ä¸œè¥");
 	strcpy(train_list[3][0].sequence,"D101");
 	train_list[3][0].fare=195; 
 	train_list[3][0].SpareTicketNum=300;
@@ -98,9 +98,9 @@ void info()//³µ´ÎĞÅÏ¢¸³Öµ
 	train_list[3][0].StartTime.hour=07;
 	train_list[3][0].StartTime.minute=15;
 	train_list[3][0].head=NULL;
-//--ÁÄ³Ç
+//--èŠåŸ
 //-L101
-	strcpy(train_list[4][0].terminal,"ÁÄ³Ç");
+	strcpy(train_list[4][0].terminal,"èŠåŸ");
 	strcpy(train_list[4][0].sequence,"L101");
 	train_list[4][0].fare=220; 
 	train_list[4][0].SpareTicketNum=300;
@@ -111,9 +111,9 @@ void info()//³µ´ÎĞÅÏ¢¸³Öµ
 	train_list[4][0].StartTime.minute=30;
 	train_list[4][0].head=NULL;	
 
-//--ÁÄ³Ç
+//--èŠåŸ
 //-L102
-	strcpy(train_list[4][1].terminal,"ÁÄ³Ç");
+	strcpy(train_list[4][1].terminal,"èŠåŸ");
 	strcpy(train_list[4][1].sequence,"L102");
 	train_list[4][1].fare=220; 
 	train_list[4][1].SpareTicketNum=300;
@@ -125,17 +125,17 @@ void info()//³µ´ÎĞÅÏ¢¸³Öµ
 	train_list[4][1].head=NULL;	
 }
 
-//º¯ÊıÉùÃ÷ 
+//å‡½æ•°å£°æ˜ 
 int press_key();
 
-//×Óº¯ÊıÇøÓò
-int input_guests_info()//1-4-3 µ¼³ö³Ë¿ÍĞÅÏ¢ Done
+//å­å‡½æ•°åŒºåŸŸ
+int input_guests_info()//1-4-3 å¯¼å‡ºä¹˜å®¢ä¿¡æ¯ Done
 {
 	system("cls");
 	char temp[4];
 	int place,code=0,flg=0; 
 	printf("*--------------------*\n");
-	printf("|ÇëÊäÈëĞèÒªµ¼³öµÄ³µ´Î|\n");
+	printf("|è¯·è¾“å…¥éœ€è¦å¯¼å‡ºçš„è½¦æ¬¡|\n");
 	printf("*--------------------*\n");	
 	scanf("%s",temp);
 	if(temp[0]=='Q') 
@@ -171,7 +171,7 @@ int input_guests_info()//1-4-3 µ¼³ö³Ë¿ÍĞÅÏ¢ Done
 	else
 	{
 		flg=1;
-		printf("ÊäÈë¸ñÊ½ÓĞÎó£¡ÇëÖØĞÂÊäÈë\n");
+		printf("è¾“å…¥æ ¼å¼æœ‰è¯¯ï¼è¯·é‡æ–°è¾“å…¥\n");
 		system("pause");
 		input_guests_info();
 	}
@@ -181,20 +181,20 @@ int input_guests_info()//1-4-3 µ¼³ö³Ë¿ÍĞÅÏ¢ Done
 	
 	while(ptr!=NULL)
 	{
-		printf("³Ë¿ÍĞÕÃû %s\n",ptr->name);
-		printf("Éí·İÖ¤ºÅ %s\n",ptr->IDcard);
-		printf("¶©¹ºÆ±Êı %d\n",ptr->TicketNum);
-		printf("¶©¹º×Ü¼Û %.2lf\n",ptr->FareSum);
+		printf("ä¹˜å®¢å§“å %s\n",ptr->name);
+		printf("èº«ä»½è¯å· %s\n",ptr->IDcard);
+		printf("è®¢è´­ç¥¨æ•° %d\n",ptr->TicketNum);
+		printf("è®¢è´­æ€»ä»· %.2lf\n",ptr->FareSum);
 		printf("%#####################\n");
 		ptr=ptr->next;
 	}
 	system("pause");
 }
-int sold_out_search()//1-4-2-²éÑ¯¸æóÀ³µ´Î Done
+int sold_out_search()//1-4-2-æŸ¥è¯¢å‘Šç½„è½¦æ¬¡ Done
 {
 	int i,j,k;
 	system("cls");
-	printf("µ±Ç°¸æóÀµÄ³µÆ±Îª£º\n");
+	printf("å½“å‰å‘Šç½„çš„è½¦ç¥¨ä¸ºï¼š\n");
 	printf("*#*#*#*#*#*#*#*#*#*#*#\n");
 	for(i=0;i<5;i++)
 	{
@@ -202,7 +202,7 @@ int sold_out_search()//1-4-2-²éÑ¯¸æóÀ³µ´Î Done
 		{
 			if(train_list[i][j].SpareTicketNum==0&&(train_list[i][j].head!=NULL))
 			{
-				printf("%sÕ¾ %s³µ´Î\n",train_list[i][j].terminal,train_list[i][j].sequence);
+				printf("%sç«™ %sè½¦æ¬¡\n",train_list[i][j].terminal,train_list[i][j].sequence);
 			}
 		}
 	}
@@ -211,16 +211,16 @@ int sold_out_search()//1-4-2-²éÑ¯¸æóÀ³µ´Î Done
 	
 }
  
-int sequence_search_function()//1-4-1 ³µ´Î²éÑ¯ Done
+int sequence_search_function()//1-4-1 è½¦æ¬¡æŸ¥è¯¢ Done
 {
 	system("cls");
 	char temp[4];
 	int place,code=0,flg=0; 
 	printf("#-----------------------------------#\n");
-	printf("|          ***³µ´Î²éÑ¯ ***          |\n");
+	printf("|          ***è½¦æ¬¡æŸ¥è¯¢ ***          |\n");
 	printf("|                                   |\n");
-	printf("|     ÇëÔÚÏÂ·½ÊäÈëÄúÒª²éÑ¯µÄ³µ´Î    |\n");
-	printf("|             ÊäÈëT·µ»Ø             |\n");
+	printf("|     è¯·åœ¨ä¸‹æ–¹è¾“å…¥æ‚¨è¦æŸ¥è¯¢çš„è½¦æ¬¡    |\n");
+	printf("|             è¾“å…¥Tè¿”å›             |\n");
 	printf("#-----------------------------------#\n");
 	scanf("%s",temp);
 	if(temp[0]=='Q')
@@ -256,32 +256,32 @@ int sequence_search_function()//1-4-1 ³µ´Î²éÑ¯ Done
 	else
 	{
 		flg=1;
-		printf("ÊäÈë¸ñÊ½ÓĞÎó£¡ÇëÖØĞÂÊäÈë\n");
+		printf("è¾“å…¥æ ¼å¼æœ‰è¯¯ï¼è¯·é‡æ–°è¾“å…¥\n");
 		system("pause");
 		sequence_search_function();
 	}
 	
 	system("cls");
 	printf("#-----------------------------------#\n");
-	printf("|          ***²éÑ¯½á¹û ***          |\n");
-	printf("|  Äã²éÑ¯µÄ³µ´ÎÎª%sÕ¾%s°à´ÎÁĞ³µ |\n",train_list[place][code].terminal,train_list[place][code].sequence);
-	printf("|  ·¢³µÊ±¼ä%hdÄê%hdÔÂ%hdÈÕ%hdÊ±%hd·Ö   |\n",train_list[place][code].StartTime.year,train_list[place][code].StartTime.month,train_list[place][code].StartTime.day,train_list[place][code].StartTime.hour,train_list[place][code].StartTime.minute);
-	printf("|  ³µÆ±Ê£ÓàÁ¿%3d                    |\n",train_list[place][code].SpareTicketNum);
-	printf("|  Æ±¼Û%.2lf                       |\n",train_list[place][code].fare);
+	printf("|          ***æŸ¥è¯¢ç»“æœ ***          |\n");
+	printf("|  ä½ æŸ¥è¯¢çš„è½¦æ¬¡ä¸º%sç«™%sç­æ¬¡åˆ—è½¦ |\n",train_list[place][code].terminal,train_list[place][code].sequence);
+	printf("|  å‘è½¦æ—¶é—´%hdå¹´%hdæœˆ%hdæ—¥%hdæ—¶%hdåˆ†   |\n",train_list[place][code].StartTime.year,train_list[place][code].StartTime.month,train_list[place][code].StartTime.day,train_list[place][code].StartTime.hour,train_list[place][code].StartTime.minute);
+	printf("|  è½¦ç¥¨å‰©ä½™é‡%3d                    |\n",train_list[place][code].SpareTicketNum);
+	printf("|  ç¥¨ä»·%.2lf                       |\n",train_list[place][code].fare);
 	printf("#-----------------------------------#\n");
 	
 	system("pause");
 }
-int book_ticket()//1-2-1¶©Æ±½çÃæ£¨ÏµÍ³£© Done
+int book_ticket()//1-2-1è®¢ç¥¨ç•Œé¢ï¼ˆç³»ç»Ÿï¼‰ Done
 {
 	system("cls");
 	char temp[4];
 	int place,code=0,flg=0; 
 	printf("#-----------------------------------#\n");
-	printf("|          ***¶©Æ±½çÃæ ***          |\n");
+	printf("|          ***è®¢ç¥¨ç•Œé¢ ***          |\n");
 	printf("|                                   |\n");
-	printf("|       ÇëÊäÈëÄúÒª¶©¹ºÂòµÄ³µ´Î      |\n");
-	printf("|             ÊäÈëT·µ»Ø             |\n");
+	printf("|       è¯·è¾“å…¥æ‚¨è¦è®¢è´­ä¹°çš„è½¦æ¬¡      |\n");
+	printf("|             è¾“å…¥Tè¿”å›             |\n");
 	printf("#-----------------------------------#\n");
 	scanf("%s",temp);
 	if(temp[0]=='Q')
@@ -317,7 +317,7 @@ int book_ticket()//1-2-1¶©Æ±½çÃæ£¨ÏµÍ³£© Done
 	else
 	{
 		flg=1;
-		printf("ÊäÈë¸ñÊ½ÓĞÎó£¡ÇëÖØĞÂÊäÈë\n");
+		printf("è¾“å…¥æ ¼å¼æœ‰è¯¯ï¼è¯·é‡æ–°è¾“å…¥\n");
 		system("pause");
 		book_ticket();
 	}
@@ -330,9 +330,9 @@ int book_ticket()//1-2-1¶©Æ±½çÃæ£¨ÏµÍ³£© Done
 	{
 		system("cls");
 		printf("#----------------------------------------#\n");
-		printf("|            ***¶©Æ±½çÃæ ***             |\n");
-		printf("| %sÕ¾ %sºÅ°à´Î Ê£Óà%d %.2fÔªÃ¿ÕÅ |\n",train_list[place][code].terminal,train_list[place][code].sequence,train_list[place][code].SpareTicketNum,train_list[place][code].fare);
-		printf("|         ÇëÊäÈëÄúÒª¶©¹ºÂòµÄÊıÁ¿         |\n");
+		printf("|            ***è®¢ç¥¨ç•Œé¢ ***             |\n");
+		printf("| %sç«™ %så·ç­æ¬¡ å‰©ä½™%d %.2få…ƒæ¯å¼  |\n",train_list[place][code].terminal,train_list[place][code].sequence,train_list[place][code].SpareTicketNum,train_list[place][code].fare);
+		printf("|         è¯·è¾“å…¥æ‚¨è¦è®¢è´­ä¹°çš„æ•°é‡         |\n");
 		printf("#----------------------------------------#\n");
 
 		scanf("%d",&tickets);
@@ -342,7 +342,7 @@ int book_ticket()//1-2-1¶©Æ±½çÃæ£¨ÏµÍ³£© Done
 		}
 		if(tickets>train_list[place][code].SpareTicketNum)
 		{
-			printf("³µÆ±ÓàÁ¿²»×ã,ÇëÖØĞÂÊäÈë£¡\n");
+			printf("è½¦ç¥¨ä½™é‡ä¸è¶³,è¯·é‡æ–°è¾“å…¥ï¼\n");
 			system("pause");
 			goto loop;
 		}
@@ -351,9 +351,9 @@ int book_ticket()//1-2-1¶©Æ±½çÃæ£¨ÏµÍ³£© Done
 		{
 			system("cls");
 			printf("#------------------------------------#\n");
-			printf("|           ***¶©Æ±½çÃæ ***          |\n");
-			printf("|          %sÕ¾ %sºÅ°à´Î         |\n",train_list[place][code].terminal,train_list[place][code].sequence);
-			printf("|            ¶©Æ±ÊıÁ¿%4d            |\n",tickets);
+			printf("|           ***è®¢ç¥¨ç•Œé¢ ***          |\n");
+			printf("|          %sç«™ %så·ç­æ¬¡         |\n",train_list[place][code].terminal,train_list[place][code].sequence);
+			printf("|            è®¢ç¥¨æ•°é‡%4d            |\n",tickets);
 			printf("#------------------------------------#\n");
 			
 			struct node *ptr,*p_r1,*p_r2;
@@ -374,13 +374,13 @@ int book_ticket()//1-2-1¶©Æ±½çÃæ£¨ÏµÍ³£© Done
 			}
 			
 			train_list[place][code].SpareTicketNum-=tickets;
-			printf("ÇëÊäÈëĞÕÃû\n");				
+			printf("è¯·è¾“å…¥å§“å\n");				
 			scanf("%s",ptr->name);
-			printf("ÇëÊäÈëÉí·İÖ¤ºÅ\n");
+			printf("è¯·è¾“å…¥èº«ä»½è¯å·\n");
 			scanf("%s",ptr->IDcard);
 		
 		
-			printf("³É¹¦¶©Æ±,ÇëÖ§¸¶%.2fÔªÈËÃñ±Ò\n",tickets*train_list[place][code].fare);
+			printf("æˆåŠŸè®¢ç¥¨,è¯·æ”¯ä»˜%.2få…ƒäººæ°‘å¸\n",tickets*train_list[place][code].fare);
 			ptr->TicketNum=tickets;
 			ptr->FareSum=tickets*train_list[place][code].fare;
 			ptr->next=NULL;
@@ -391,16 +391,16 @@ int book_ticket()//1-2-1¶©Æ±½çÃæ£¨ÏµÍ³£© Done
 	}
 }
 
-int return_ticket()//1-3-1ÍËÆ±½çÃæ Done
+int return_ticket()//1-3-1é€€ç¥¨ç•Œé¢ Done
 {
 	system("cls");
 	char temp[4];
 	int place,code=0,flg=0; 
 	printf("#-----------------------------------#\n");
-	printf("|         +++ ÍËÆ±½çÃæ +++          |\n");
+	printf("|         +++ é€€ç¥¨ç•Œé¢ +++          |\n");
 	printf("|                                   |\n");
-	printf("|       ÇëÊäÈëÄúĞèÒªÍËÆ±µÄ³µ´Î      |\n");
-	printf("|             ÊäÈëT·µ»Ø             |\n");
+	printf("|       è¯·è¾“å…¥æ‚¨éœ€è¦é€€ç¥¨çš„è½¦æ¬¡      |\n");
+	printf("|             è¾“å…¥Tè¿”å›             |\n");
 	printf("#-----------------------------------#\n");
 	scanf("%s",temp);
 	if(temp[0]=='Q')
@@ -437,7 +437,7 @@ int return_ticket()//1-3-1ÍËÆ±½çÃæ Done
 	else
 	{
 		flg=1;
-		printf("ÊäÈë¸ñÊ½ÓĞÎó£¡ÇëÖØĞÂÊäÈë\n");
+		printf("è¾“å…¥æ ¼å¼æœ‰è¯¯ï¼è¯·é‡æ–°è¾“å…¥\n");
 		system("pause");
 		return_ticket();
 	}
@@ -453,11 +453,11 @@ int return_ticket()//1-3-1ÍËÆ±½çÃæ Done
 	{
 		system("cls");
 		printf("#-----------------------------------#\n");
-		printf("|          ***ÍËÆ±½çÃæ ***          |\n");
-		printf("|   %sÕ¾ %s³µ´Î Ê£ÓàÆ±Êı%4d    |\n",train_list[place][code].sequence,train_list[place][code].terminal,train_list[place][code].SpareTicketNum);
+		printf("|          ***é€€ç¥¨ç•Œé¢ ***          |\n");
+		printf("|   %sç«™ %sè½¦æ¬¡ å‰©ä½™ç¥¨æ•°%4d    |\n",train_list[place][code].sequence,train_list[place][code].terminal,train_list[place][code].SpareTicketNum);
 		printf("#-----------------------------------#\n");
 		
-		printf("ÇëÊäÈëÄúµÄÉí·İÖ¤ºÅÂë£¨ÊäÈë0ÍË³ö£©\n");
+		printf("è¯·è¾“å…¥æ‚¨çš„èº«ä»½è¯å·ç ï¼ˆè¾“å…¥0é€€å‡ºï¼‰\n");
 		scanf("%s",tempID);
 		if(tempID==0)
 		{
@@ -465,27 +465,27 @@ int return_ticket()//1-3-1ÍËÆ±½çÃæ Done
 		} 
 		p1=train_list[place][code].head;
 		
-		if(train_list[place][code].head==NULL)//¿Õ³µ 
+		if(train_list[place][code].head==NULL)//ç©ºè½¦ 
 		{
 			system("cls");
-			printf("¸ÃÁĞ³µµ±Ç°ÎŞÈË¶©Æ±,¼ì²éÄãÊäÈëµÄ³µ´ÎÊÇ·ñÕıÈ·£¡");
+			printf("è¯¥åˆ—è½¦å½“å‰æ— äººè®¢ç¥¨,æ£€æŸ¥ä½ è¾“å…¥çš„è½¦æ¬¡æ˜¯å¦æ­£ç¡®ï¼");
 			system("pause");
 			return 1;
 		}
-		else if(strcmp(tempID,p1->IDcard)==0)//ÍËÆ±µÄÊÇµÚÒ»¸ö¶©Æ±µÄ³Ë¿Í 
+		else if(strcmp(tempID,p1->IDcard)==0)//é€€ç¥¨çš„æ˜¯ç¬¬ä¸€ä¸ªè®¢ç¥¨çš„ä¹˜å®¢ 
 		{
 			 flg_srhID=1; 
 			
-			printf("ÇëÊäÈëÄúµÄÒªÍË¶©µÄÆ±Êı\n");
+			printf("è¯·è¾“å…¥æ‚¨çš„è¦é€€è®¢çš„ç¥¨æ•°\n");
 			scanf("%d",&tempTicksts);
 			if(tempTicksts==0)
 			{
 				return 1;	
 			} 
-			else if(tempTicksts==(p1->TicketNum))//È«ÍËµô 
+			else if(tempTicksts==(p1->TicketNum))//å…¨é€€æ‰ 
 			{
 				system("cls");
-				printf("ÍËÆ±³É¹¦£¡ÄúÒÑ³É¹¦È«²¿ÍËÆ±%dÕÅ£¬ÍË·Ñ%.2fÔª\n",tempTicksts,train_list[place][code].fare*tempTicksts);
+				printf("é€€ç¥¨æˆåŠŸï¼æ‚¨å·²æˆåŠŸå…¨éƒ¨é€€ç¥¨%då¼ ï¼Œé€€è´¹%.2få…ƒ\n",tempTicksts,train_list[place][code].fare*tempTicksts);
 				train_list[place][code].head=p1->next;
 				free(p1);
 				train_list[place][code].SpareTicketNum+=tempTicksts;
@@ -493,25 +493,25 @@ int return_ticket()//1-3-1ÍËÆ±½çÃæ Done
 				return 1;
 				
 			}
-			else if(tempTicksts>p1->TicketNum)//Ã»Âò¹» 
+			else if(tempTicksts>p1->TicketNum)//æ²¡ä¹°å¤Ÿ 
 			{
 				system("cls");
-				printf("ÄúµÄÍËÆ±ÊıÁ¿´óÓÚÄúµÄ¶©Æ±ÊıÁ¿£¡ÇëÖØĞÂÊäÈë\n");
+				printf("æ‚¨çš„é€€ç¥¨æ•°é‡å¤§äºæ‚¨çš„è®¢ç¥¨æ•°é‡ï¼è¯·é‡æ–°è¾“å…¥\n");
 				system("pause");
 				goto mark;		
 			}
-			else if(tempTicksts<p1->TicketNum)//²¿·ÖÍË 
+			else if(tempTicksts<p1->TicketNum)//éƒ¨åˆ†é€€ 
 			{
 				system("cls");
 				p1->TicketNum-=tempTicksts;
 				train_list[place][code].SpareTicketNum+=tempTicksts;
-				printf("ÍËÆ±³É¹¦£¡ÄúÒÑ³É¹¦ÍËÆ±%dÕÅ£¬ÍË·Ñ%.2fÔª\n",tempTicksts,train_list[place][code].fare*tempTicksts);
+				printf("é€€ç¥¨æˆåŠŸï¼æ‚¨å·²æˆåŠŸé€€ç¥¨%då¼ ï¼Œé€€è´¹%.2få…ƒ\n",tempTicksts,train_list[place][code].fare*tempTicksts);
 				system("pause");
 				return 1;
 			}
 		}
 
-		else if(strcmp(tempID,p1->IDcard)!=0)//²»ÊÇµÚÒ»¸ö³Ë¿Í
+		else if(strcmp(tempID,p1->IDcard)!=0)//ä¸æ˜¯ç¬¬ä¸€ä¸ªä¹˜å®¢
 		{
 			
 			p2=p1;
@@ -525,16 +525,16 @@ int return_ticket()//1-3-1ÍËÆ±½çÃæ Done
 				}
 			}
 			flg_srhID=1;
-			printf("ÇëÊäÈëÄúµÄÒªÍË¶©µÄÆ±Êı\n");
+			printf("è¯·è¾“å…¥æ‚¨çš„è¦é€€è®¢çš„ç¥¨æ•°\n");
 			scanf("%d",&tempTicksts);
 			if(tempTicksts==0)
 			{
 				return 1;	
 			} 
-			else if(tempTicksts==(p2->TicketNum))//È« 
+			else if(tempTicksts==(p2->TicketNum))//å…¨ 
 			{
 				system("cls");
-				printf("ÍËÆ±³É¹¦£¡ÄúÒÑ³É¹¦È«²¿ÍËÆ±%dÕÅ£¬ÍË·Ñ%.2fÔª\n",tempTicksts,train_list[place][code].fare*tempTicksts);
+				printf("é€€ç¥¨æˆåŠŸï¼æ‚¨å·²æˆåŠŸå…¨éƒ¨é€€ç¥¨%då¼ ï¼Œé€€è´¹%.2få…ƒ\n",tempTicksts,train_list[place][code].fare*tempTicksts);
 				p1->next=p2->next;
 				free(p2);
 				train_list[place][code].SpareTicketNum+=tempTicksts;
@@ -542,44 +542,44 @@ int return_ticket()//1-3-1ÍËÆ±½çÃæ Done
 				return 1;
 				
 			}
-			else if(tempTicksts>p2->TicketNum)//²»¹» 
+			else if(tempTicksts>p2->TicketNum)//ä¸å¤Ÿ 
 			{
 				system("cls");
-				printf("ÄúµÄÍËÆ±ÊıÁ¿´óÓÚÄúµÄ¶©Æ±ÊıÁ¿£¡ÇëÖØĞÂÊäÈë\n");
+				printf("æ‚¨çš„é€€ç¥¨æ•°é‡å¤§äºæ‚¨çš„è®¢ç¥¨æ•°é‡ï¼è¯·é‡æ–°è¾“å…¥\n");
 				system("pause");
 				goto mark;		
 			}
-			else if(tempTicksts<p2->TicketNum)//²¿·Ö 
+			else if(tempTicksts<p2->TicketNum)//éƒ¨åˆ† 
 			{	
 				system("cls");
 				p2->TicketNum-=tempTicksts;
 				train_list[place][code].SpareTicketNum+=tempTicksts;
-				printf("ÍËÆ±³É¹¦£¡ÄúÒÑ³É¹¦ÍËÆ±%dÕÅ£¬ÍË·Ñ%.2fÔª\n",tempTicksts,train_list[place][code].fare*tempTicksts);
+				printf("é€€ç¥¨æˆåŠŸï¼æ‚¨å·²æˆåŠŸé€€ç¥¨%då¼ ï¼Œé€€è´¹%.2få…ƒ\n",tempTicksts,train_list[place][code].fare*tempTicksts);
 				system("pause");
 				return 1;
 			}
 		}
 		
 		mark2:
-		if(flg_srhID==0)//²éÎŞ´ËÈË 
+		if(flg_srhID==0)//æŸ¥æ— æ­¤äºº 
 		{
 			system("cls");
-			printf("²éÎŞ´ËÈË£¬ÇëÖØĞÂÊäÈëÄãµÄÉí·İÖ¤ºÅ");
+			printf("æŸ¥æ— æ­¤äººï¼Œè¯·é‡æ–°è¾“å…¥ä½ çš„èº«ä»½è¯å·");
 			system("pause");
 			goto mark;
 		}	
 	}
 }
-int other_search_function()//1-4µÚ¶ş¼¶²Ëµ¥-ÆäËû²éÑ¯¹¦ÄÜ Done
+int other_search_function()//1-4ç¬¬äºŒçº§èœå•-å…¶ä»–æŸ¥è¯¢åŠŸèƒ½ Done
 {
 	int key;
 	system("cls");
 
 	printf("#-----------------------------------#\n");
-	printf("| * ÊäÈë 1 ³µ´ÎÊäÈë²éÑ¯             |\n");
-	printf("| * ÊäÈë 2 ²éÑ¯ÒÑ¸æóÀÆ±             |\n");
-	printf("| * ÊäÈë 3 µ¼³ö³Ë¿ÍĞÅÏ¢             |\n");
-	printf("| * ÊäÈë 4 ·µ»ØÉÏ¼¶²Ëµ¥             |\n");
+	printf("| * è¾“å…¥ 1 è½¦æ¬¡è¾“å…¥æŸ¥è¯¢             |\n");
+	printf("| * è¾“å…¥ 2 æŸ¥è¯¢å·²å‘Šç½„ç¥¨             |\n");
+	printf("| * è¾“å…¥ 3 å¯¼å‡ºä¹˜å®¢ä¿¡æ¯             |\n");
+	printf("| * è¾“å…¥ 4 è¿”å›ä¸Šçº§èœå•             |\n");
 	printf("#-----------------------------------#\n");
 
 	key=press_key();
@@ -605,7 +605,7 @@ int other_search_function()//1-4µÚ¶ş¼¶²Ëµ¥-ÆäËû²éÑ¯¹¦ÄÜ Done
 	
 }
 
-int press_key()//0¼ì²â°´¼ü²¢·µ»ØÊı×Ö Done
+int press_key()//0æ£€æµ‹æŒ‰é”®å¹¶è¿”å›æ•°å­— Done
 {
 	char n;
 	n=getchar();
@@ -613,35 +613,35 @@ int press_key()//0¼ì²â°´¼ü²¢·µ»ØÊı×Ö Done
 	return n;
 } 
  
-void search_system()//1-1²éÑ¯½çÃæ Done
+void search_system()//1-1æŸ¥è¯¢ç•Œé¢ Done
 {
 	char temp;
 	system("cls");
 	printf("#-----------------------------------#\n");
-	printf("|   ##      ³µ´Î²éÑ¯½çÃæ      ##    |\n");
-	printf("|        µ±Ç°³µ´ÎÓĞ£º               |\n");
-	printf("| # ÇàµºÕ¾ #  Q101 Q102             |\n");
-	printf("| # ÁÙÒÊÕ¾ #  L101                  |\n");
-	printf("| # ×Í²©Õ¾ #  Z101                  |\n");
-	printf("| # ¶«ÓªÕ¾ #  D101                  |\n");
-	printf("| # ÁÄ³ÇÕ¾ #  L201 L202             |\n");
+	printf("|   ##      è½¦æ¬¡æŸ¥è¯¢ç•Œé¢      ##    |\n");
+	printf("|        å½“å‰è½¦æ¬¡æœ‰ï¼š               |\n");
+	printf("| # é’å²›ç«™ #  Q101 Q102             |\n");
+	printf("| # ä¸´æ²‚ç«™ #  L101                  |\n");
+	printf("| # æ·„åšç«™ #  Z101                  |\n");
+	printf("| # ä¸œè¥ç«™ #  D101                  |\n");
+	printf("| # èŠåŸç«™ #  L201 L202             |\n");
 	printf("#-----------------------------------#\n");
 	system("pause"); 
  
 }
 
-int menu_page()//1µÚÒ»¼¶²Ëµ¥ Done 
+int menu_page()//1ç¬¬ä¸€çº§èœå• Done 
 {
 	int key;
 	printf("#-----------------------------------#\n");
-	printf("| * ÊäÈë 1 ²éÑ¯µ±Ç°»ğ³µÏßÂ·         |\n");
-	printf("| * ÊäÈë 2 ´ò¿ª¶©Æ±¹¦ÄÜ             |\n");
-	printf("| * ÊäÈë 3 ´ò¿ªÍËÆ±¹¦ÄÜ             |\n");
-	printf("| * ÊäÈë 4 ´ò¿ªÆäËû²éÑ¯¹¦ÄÜ         |\n");
-	printf("| * ÊäÈë 5 ÍË³ö¶©Æ±ÏµÍ³             |\n");
+	printf("| * è¾“å…¥ 1 æŸ¥è¯¢å½“å‰ç«è½¦çº¿è·¯         |\n");
+	printf("| * è¾“å…¥ 2 æ‰“å¼€è®¢ç¥¨åŠŸèƒ½             |\n");
+	printf("| * è¾“å…¥ 3 æ‰“å¼€é€€ç¥¨åŠŸèƒ½             |\n");
+	printf("| * è¾“å…¥ 4 æ‰“å¼€å…¶ä»–æŸ¥è¯¢åŠŸèƒ½         |\n");
+	printf("| * è¾“å…¥ 5 é€€å‡ºè®¢ç¥¨ç³»ç»Ÿ             |\n");
 	printf("#-----------------------------------#\n");
-//DONE: ¶©Æ± 
-//DONE: ÍËÆ± 
+//DONE: è®¢ç¥¨ 
+//DONE: é€€ç¥¨ 
 	key=press_key();
 	
 	switch(key)
@@ -681,7 +681,7 @@ int menu_page()//1µÚÒ»¼¶²Ëµ¥ Done
 			break;
 			
 		case 5:
-			printf("¸ĞĞ»ÄúµÄÊ¹ÓÃ");
+			printf("æ„Ÿè°¢æ‚¨çš„ä½¿ç”¨");
 			exit(0);	
 			break;
 			
@@ -690,8 +690,8 @@ int menu_page()//1µÚÒ»¼¶²Ëµ¥ Done
 	
 }
 
-//Ö÷º¯ÊıÇøÓò 
-int main()//Ö÷º¯Êı£¬µ÷ÓÃ²Ëµ¥ Done
+//ä¸»å‡½æ•°åŒºåŸŸ 
+int main()//ä¸»å‡½æ•°ï¼Œè°ƒç”¨èœå• Done
 {
 	info();
 	while(1)
