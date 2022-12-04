@@ -3,7 +3,6 @@
 #include<stdlib.h>
 #include<windows.h>
 
-//程序设计课程设计作业-计2204-张继尧//
 
 //结构体声明区 
 struct node//乘客信息 （在车次信息中被引用） 
